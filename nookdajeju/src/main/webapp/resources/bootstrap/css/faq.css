@@ -1,0 +1,249 @@
+body{
+	font-family: 'nookda';
+}
+
+.container_semiwide {
+	width: 60%;
+	margin: 0 auto;
+	padding-bottom: 40px;
+	padding-top: 40px;
+} 
+
+.title {
+	font-size: 30px;
+	font-weight: bolder;
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 25px;
+}
+
+.faqtitle {
+	letter-spacing: 10px;
+	font-size: 25px;
+	font-weight: 600;
+	color: var(--point-color);
+	text-align: center;
+	padding : 30px;
+	margin-bottom:50px;
+	border-bottom: 5px double orange;
+	
+}
+
+/* faq 리스트 */
+
+.textmenu a {
+	cursor: pointer;
+}    
+
+.textmenu .hide {
+	display: none;
+}
+
+.textmenu li {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.textmenu ul {
+	background-color: #fcfaf8;
+}
+
+.faqList li {
+	font-family: 'nookda';
+	padding: 20px;
+	border: 1px solid #eee;
+	font-size: 13px;
+	word-break: keep-all;
+	color: #282828;
+}
+
+.faqname {
+	color: #000;
+	text-align: center;
+/* 	font-family: 'Gyeonggi'; */
+	font-family: 'nookda';
+	font-weight: 600;	
+	font-size: 15px;
+	margin-bottom: 20px;
+}
+ 
+.faqname:hover {
+	color : var(--point-color);
+} 
+
+.faqList .faq_text {
+	border: none;
+	padding: 20px;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.smbtn {
+	float: right;
+	width: 30px;
+	height: 30px;
+	border: none;
+	background: none;
+	font-size: 13px;
+	cursor: pointer;
+	color: #999;
+	text-decoration: underline;
+}
+
+.smbtn:hover {
+	color : var(--point-color);
+}
+
+/* 검색 */
+.searchDIV {
+	padding-top: 20px;
+	display: inline;
+	text-align: center;
+	padding: 10px;
+	 margin-bottom: 30px;
+}
+
+.searchDIV button {
+	border: none; 
+	background-color: transparent;
+	cursor: pointer;
+	background: none;
+}
+
+.searchkey {
+    border: none;
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+    color: var(--point-color);
+    border-bottom: 1px solid var(--point-color);
+    margin-bottom: 16px;
+    outline: 0;
+    text-align: center;
+}
+
+.searchvalue {
+    border: none;
+    width: 400px;
+    height: 35px;
+    font-size: 14px;
+    color : var(--point-color);
+    border-bottom: 1px solid var(--point-color);
+    margin-bottom: 12px;
+    outline: 0;
+}
+
+/*  */
+
+.line {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-bottom : 1px solid #e4e4e4;
+}
+
+textarea {
+	display: block;
+	height: 300px;
+	width: 100%;
+	border: 1px solid #c0c0c0;
+	outline: 0;
+	font-size: 14px;
+	padding: 10px 12px;
+	line-height: 22px;
+	margin-top: 15px;
+	margin-bottom: 60px;
+	resize: none;
+	word-break: keep-all;
+}
+
+textarea::placeholder {
+	color: #aaa;
+	font-size: 13px;
+}
+
+.filebox {
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+.file_title {
+	font-size: 15px;
+	font-weight: 600;
+	vertical-align: middle;
+	margin-bottom: 20px;
+	
+}
+
+.subtitle {
+	color: #000;
+	font-family: 'Gyeonggi';
+	font-size: 18px;
+	font-weight: 400;
+	margin-top: 20px;
+}
+
+/* 등록 버튼 */
+.submit_box {
+	text-align: center;
+	margin-top: 30px;
+}
+
+input[type="submit"] {
+	width: 50%;
+	margin-top: 24px;
+}
+
+.submit_box .faqbtn {
+	width: 50%;
+    background-color: var(--point-color);
+    border: 1px solid var(--point-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    position : relative;
+    float: center;
+    margin-bottom: 30px;
+}
+
+.submit_box .faqbtn:hover {
+	width: 50%;
+    background-color: #fff;
+    border: 1px solid var(--point-color);
+    color: var(--point-color);
+    padding: 10px;
+    position : relative;
+    float: center;
+}
+
+/* 페이징 */
+.pagination_bottom {
+	display: inline-flex;
+	margin-top: 20px;
+	font-size: 15px;
+}
+
+.pagination_bottom a {
+	color: #999;
+	padding-right: 15px;
+}
+
+.pagination_bottom li a:hover {
+	text-decoration: none;
+	color: var(--point-color);
+}
+
+.currentPage a {
+	color: var(--point-color);
+}
+
+.pagination_bottom img {
+	margin-bottom: 5px;
+	width: 23px; 
+	height: 23px;
+}

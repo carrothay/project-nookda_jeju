@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<typeAliases>
+		<typeAlias alias="member" type="com.ch.nookdajeju.model.Member" />
+		<typeAlias alias="acm" type="com.ch.nookdajeju.model.Acm" />
+		<typeAlias alias="acmpic" type="com.ch.nookdajeju.model.Acmpic" />
+		<typeAlias alias="booking" type="com.ch.nookdajeju.model.Booking" />
+		<typeAlias alias="review" type="com.ch.nookdajeju.model.Review" />
+		<typeAlias alias="likes" type="com.ch.nookdajeju.model.Likes" />
+		<typeAlias alias="messageModel" type="com.ch.nookdajeju.model.MessageModel" />
+		<typeAlias alias="askboard" type="com.ch.nookdajeju.model.Askboard" />
+		<typeAlias alias="faq" type="com.ch.nookdajeju.model.Faq" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="member.xml" />
+		<mapper resource="acm.xml" />
+		<mapper resource="acmpic.xml" />
+		<mapper resource="booking.xml" />
+		<mapper resource="review.xml" />
+		<mapper resource="likes.xml" />
+		<mapper resource="message.xml" />
+		<mapper resource="askboard.xml" />
+		<mapper resource="faq.xml" />
+	</mappers>
+</configuration>

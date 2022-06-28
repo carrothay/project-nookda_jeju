@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="likesns">
+	<!-- 회원이 좋아요 했는지 체크 -->
+	<select id="select" parameterType="likes" resultType="likes">
+		select * from likes where mno=#{mno} and acmno=#{acmno}
+	</select>
+	
+	<!-- 상세페이지 용-->
+	<insert id="insert" parameterType="likes">
+      <selectKey keyProperty="lno" order="BEFORE" resultType="integer">
+            select nvl(max(lno), 0) + 1 lno from likes
+      </selectKey>
+      insert into likes values(#{lno},#{mno},#{acmno})
+   </insert>
+	
+	<delete id="delete" parameterType="likes">
+		delete likes where mno=#{mno} and acmno=#{acmno}
+	</delete>
+	
+	<!-- 마이 페이지 - 총 좋아요 수 -->
+	<select id="getmyLikes" parameterType="String" resultType="integer">
+		select count(*) from likes where mno = (select mno from member where 
+		memail = #{memail})
+	</select>
+	
+	<!-- 마이페이지 - 나의 좋아요 리스트 -->
+ 	<select id="myList" parameterType="likes" resultType="likes">
+ 	select * from (select e.*, rowNum rn
+		from (select l.*, acm.acm_name, acm.latitude, acm.longtitude
+			from likes l, acm acm
+	where l.acmno = acm.acmno and l.mno = #{mno} and acm.del='n' order by lno desc) e)
+	where rn between #{startRow} and #{endRow}
+	</select>
+	</mapper>

@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+:root {
+	--point-color: #fe9a6a;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+/* header */
+header{
+	position: fixed;
+	width : 100%;
+	height: 60px;
+	padding : 0 10% 0 10%;
+	top: 0;
+	background: #fff;
+	z-index: 99;
+	font-family: 'nookda';
+}
+
+.header_inner {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.header_logo img{
+	margin-top: 7px;
+	position: relative;
+	text-align: left;
+	width: 120px;
+}
+
+	.orange{
+		 width:20px;
+	}
+	.welcome {
+		margin-right: 5px;
+	}
+	.welcome .nname{
+		margin-left: 5px;
+		color: var(--point-color);
+		font-weight: 600;
+		font-size: 15px;
+	}
+	.welcome .wel{
+		margin-left: 5px;
+		font-size: 14px;
+	}
+	
+/* nav */
+.new_nav	{
+	display: flex;
+}
+.nav_sub {
+	list-style-type: none;
+	position: absolute;
+	top: 18px;
+	right: 0px;
+}
+
+.nav_sub li {
+	float: left;
+	font-size: 15px;
+	margin-left: 10px;
+}
+
+.nav_sub a{
+	color: #666;
+}
+
+.nav_sub .sub:hover{
+	color: var(--point-color);
+	text-decoration: underline;
+}
+
+.nav_sub .page img{
+	width: 25px;
+	margin-right: 10px;
+}
+
+/* .nav_sub .page{
+	font-weight: 600;
+	letter-spacing: 3px;
+}
+
+.nav_sub .page a:hover{
+	text-decoration: none;
+	color: var(--point-color);
+}
+ */
+/* .nav_main {
+	display: inline-flex;
+	list-style-type: none;
+	position: absolute;
+    top: 25px;
+    right: 0;
+}
+
+.nav_main li {
+	float: left;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.nav_main img {
+	margin-top: 10px;
+	width: 36px;
+}
+
+.nav_main a:hover {
+	color: var(--point-color);
+	cursor: pointer;
+} */
+
+/* container */
+.container {
+	width: 566px;
+	margin: 0 auto;
+	margin-bottom: 120px;
+	margin-top: 100px;
+}
+
+.container_laywide {
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 120px;
+	margin-top: 80px;
+} 
+
+.container_wide {
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 120px;
+	margin-top: 190px;
+} 
+
+.container_middle {
+	width: 50%;
+	margin: 0 auto;
+	margin-bottom: 120px;
+	margin-top: 100px;
+}
+
+
+/* footer */
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 200px;
+	border-top: 1px solid #e4e4e4;
+	margin-top: auto;
+	margin-bottom: 50px;
+}
+
+.footer_content {
+	font-size: 14px;
+	font-weight: 300;
+	text-align: center;
+}
+
+.footer_logo {
+	width: 140px;
+	margin-bottom: 5px;
+}

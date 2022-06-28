@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="applyns">
+	<!-- 드라이버 신청 개수 확인 -->
+	<select id="getApplyTotal" parameterType="apply" resultType="integer">
+		select count(*) from (select a.*, rowNum rn from (select ap.*, m.memail, m.mlastname, m.mfstname, m.nickname, m.mphone, m.mhost
+				from admin ad, member m where ap.MB_num=m.MB_num
+			<if test="keyword!=null and keyword!=''">
+				and ${search} like '%'||#{keyword}||'%'
+			</if>
+		order by ap.AP_num desc) a)
+	</select>
+	
+	<!-- 드라이버 신청 목록 -->
+	<select id="applyList" parameterType="apply" resultType="apply">
+		select * from (select a.*, rowNum rn from (select ap.*, m.MB_id, m.MB_name, m.MB_nickName, m.MB_gender, m.MB_driverConfirm
+						from apply ap, member m where ap.MB_num=m.MB_num
+				<if test="keyword!=null and keyword!=''">
+					and ${search} like '%' || #{keyword} || '%'
+				</if>
+			order by ap.AP_num desc) a)
+			where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 드라이버 중복 신청 불가하게 하기 위해 정보 있는지 확인 -->
+	<select id="select" parameterType="integer" resultType="apply">
+		select * from apply where MB_num=#{MB_num}
+	</select>
+	
+	<!-- 드라이버 신청 -->
+	<insert id="insert" parameterType="apply">
+		insert into apply values((select nvl(max(AP_num), 0)+1 from apply), #{AP_picture}, #{MB_num})
+	</insert>
+	
+	<select id="selectAll" parameterType="integer" resultType="apply">
+		select ap.*, m.MB_id, m.MB_name, m.MB_gender, m.MB_driverConfirm from apply ap, member m
+		where ap.MB_num=m.MB_num and m.MB_num=#{MB_num}
+	</select>
+	
+	<!-- 관리자가 거절 시 관련 행 삭제(추후에 수정할 수 있으면 수정) -->
+	<delete id="deleteAp" parameterType="integer">
+		delete from apply where MB_num=#{MB_num}
+	</delete>
+	
+	<!-- 전체 신청 리스트 - 관리자메인 -->
+	<select id="applyAllList" parameterType="apply" resultType="apply">
+		select * from (select a.*, rowNum rn from (select ap.*, m.MB_id, m.MB_name, m.MB_nickName, m.MB_gender, m.MB_driverConfirm
+		from apply ap, member m where ap.MB_num=m.MB_num order by ap.AP_num desc) a) where rn between 1 and 6
+	</select>
+	
+</mapper>

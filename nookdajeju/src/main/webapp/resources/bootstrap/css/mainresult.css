@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+.container_wide {
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 120px;
+	padding-top: 15px;
+} 
+
+.line {
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 30px;
+	border-bottom : 1px solid black;
+	margin-bottom: 100px;
+}
+.line2 {
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 130px;
+	border-bottom : 1px solid black;
+	margin-bottom: 50px;
+}
+.result_title{
+	font-size: 25px;
+	font-weight: bolder;
+/* 	padding-top: 30px; */
+	padding-bottom: 25px;
+/* 	padding-left: 50px; */
+	text-align:center;
+/* 	height:206px; */
+	width:100%;
+}
+.result_title span{
+letter-spacing: 14px;
+font-size: 22px;
+text-indent: 14px;
+padding-bottom: 50px;
+}
+.result_title2{
+	font-size: 16px;
+	font-weight: bolder;
+/* 	padding-top: 30px; */
+	padding-bottom: 25px;
+	padding-left: 10%;
+/* 	text-align:center; */
+/* 	height:206px; */
+	float:right;
+	width:100%;
+}
+.result_title2 .title{
+	margin-bottom: 10px;
+}
+.content {
+	padding-top: 10px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+.content ul {
+	width: 100%;
+	margin-top: 15px;
+	list-style-type:none;
+}
+
+.content ul li {
+	float: left;
+	width: 33%;
+	margin-bottom: 20px;
+	margin-left: 2px;
+	list-style-type:none;
+	text-align: center;
+}
+.content .maplist{
+	margin-left: 50px;
+	display: flex;
+	height: 100%;
+	position: relative;
+	z-index: 1;
+	float: none; /*중요*/
+	margin-bottom: 80px;
+}
+.content .maplist>a{
+	-webkit-box-flex: 0;
+	flex-grow:0;
+	flex-shrink:0;
+	width: 150%;
+	height: 350px;
+	max-width: 600px;
+	max-height: 350px;
+}
+.content .maplist>a>img{
+	width: 95%;
+	height: 95%;
+}
+/* 내용 없을 때 ul */
+.noItems {
+	margin: 0px !important;
+	padding-top: 70px;
+	padding-bottom: 250px;
+}
+.noItems li {
+	margin-top: 100px;
+	width: 100% !important;
+	text-align: center;
+}
+.txt_title {
+	display: block;
+	font-size: 21px;
+	font-weight: 600;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: 0;
+	color: black;
+}
+.txt_maplist1{
+	text-align:left;
+	margin-left: 150px;
+	align-items: flex-start;
+	width: 200px;
+	height: 350px;
+	display: inline-block;
+}
+.txt_maplist2{
+	text-align:left;
+	margin-left: 150px;
+	align-items: flex-start;
+	width: 200px;
+	height: 350px;
+	display: inline-block;
+	margin-top: 100px;
+}
+.txt_detail{
+	display: block;
+	font-size: 17px;
+	white-space: nowrap;
+	margin: 3% 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	letter-spacing: 3.6px;
+	margin-top: 7px;
+	margin-bottom: 100px;
+}
+.txt_detail2{
+	display: block;
+	font-size: 19px;
+	white-space: nowrap;
+	margin: 3% 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	letter-spacing: 3.6px;
+}
+.txt_detail3{
+	display: block;
+	font-size: 19px;
+	white-space: nowrap;
+	margin: 3% 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	letter-spacing: 1px;
+	margin-top: 20px;
+}
+.txt_acmname{
+	text-align:left;
+	align-items: flex-start;
+	width: 300px;
+	display: inline-block;
+	font-size: 32px;
+}
+.ckbtn{
+	width: 70px;
+	height: 30px;
+	border: none;
+	background: none;
+	font-size: 15px;
+	cursor: pointer;
+	color: black;
+	text-decoration: underline;
+}
+/* 하단 내용 */
+.container_wide {
+	/*font-family: 'nookda';*/
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+/* 페이징 */
+.pagination_bottom {
+	display: inline-flex;
+	margin-top: 20px;
+	font-size: 15px;
+}
+
+.pagination_bottom a {
+	color: #999;
+	padding-right: 15px;
+}
+
+.pagination_bottom li a:hover {
+	text-decoration: none;
+	color: var(--point-color);
+}
+
+.currentPage a {
+	color: var(--point-color);
+}
+
+.pagination_bottom img {
+	margin-bottom: 5px;
+	width: 23px; 
+	height: 23px;
+}

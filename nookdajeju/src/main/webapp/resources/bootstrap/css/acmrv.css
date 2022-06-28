@@ -1,0 +1,335 @@
+.acmtext {
+	padding-right: 5px;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.rv_cnt_num {
+	margin-left: 10px;
+}
+
+.line {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-bottom : 1px solid #e4e4e4;
+}
+
+/* 리뷰 상세 보기 */
+.container_rvwide {
+	margin: 0 auto;
+	margin-bottom: 80px;
+	font-weight: 600;
+}
+
+.rv_title{
+	display: inline;
+	text-align: center;
+	align-itmes: center;
+	font-size: 25px;
+	font-weight: 600;
+	width: 70px;
+}
+
+/* 평균 별점 */
+.star_avg_top {
+/* 	float: right; */
+	font-size: 16px;
+	text-align: right;
+}
+.star_avg_top .text{
+	font-size: 16px;
+}
+.star-ratings {
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  display: inline-table;
+}
+ 
+.star-ratings-fill {
+/*   color: #fff58c; */
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-text-fill-color: black;
+}
+ 
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
+}
+/* 평균 별점  끝*/
+.rv_content ul {
+	list-style: none;
+}
+.rv_list > li{
+	border-top: 1px solid #ebebeb;
+	padding: 25px 0;
+}
+
+.rv_list.first {
+	display: table;
+	width: 100%;
+	box-sizing: border-box;
+	table-layout: fixed;
+}
+
+.rv_contents {
+	display: table;
+	width: 100%;
+	box-sizing: border-box;
+	table-layout: fixed;
+}
+
+.rv_list.first.info {
+	margin-left: 10px;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	color: #888;
+	font-weight: 500;
+	margin-right: 10px;
+}
+
+.rv_photo {
+	padding-top: 30px;
+	padding-bottom: 20px;
+	padding-right: 50px;
+	float: left;
+}
+
+.rv_text {
+	padding-top: 30px;
+	padding-bottom: 20px;
+	overflow: hidden;
+	display: block;
+	white-space: normal;
+}
+
+.detail_txt review {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp:2;
+	-webkit-box-oreint: vertical;
+	display: webkit-box;
+	max-height: 44px;
+	color: #666;
+	line-height: 22px;
+}
+
+.nickname {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.rv_date {
+	float: right;
+	margin-right: 20px;
+}
+
+.star_avg {
+	color: var(--point-color);
+	margin-left: 20px;
+}
+
+/* 리뷰 작성 */
+
+.container_middle {
+	font-family: 'nookda';
+}
+
+.container_middle .rv_star_title {
+	letter-spacing: 10px;
+	font-size: 25px;
+	font-weight: 600;
+	color: var(--point-color);
+	text-align: center;
+	padding : 30px;
+	border-bottom: 5px double orange;
+/* 	border-bottom: 5px double black; */
+	
+}
+
+.star_text {
+	font-size: 15px;
+	font-weight: 600;
+	margin-bottom: 30px;
+	float: left;
+	color: black;
+}
+
+/* 별점 */
+
+.star_input {
+	width: 100%;
+}
+
+.star_avg {
+	padding-left: 20x;
+	font-size: 15px;
+	color: var(--point-color);
+	display: inline;
+	
+}
+
+.star_avg input[type="range"] {
+	display: inline-block;
+	border: 0;
+	border-bottom: 0;
+	width: inherit;
+	-webkit-appearance: none;
+	height: 5px;
+	width: 30%;
+	background-color: rgba(0, 0, 0, 0.1);
+	outline: 0;
+	border-radius: 20px;
+	transition: background .15s ease-in-out;
+	margin-bottom: 10px;
+	margin-right: 6px;
+	vertical-align: middle;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	border: none;
+	outline: 0;
+	background: var(--point-color);
+	transition: background .15s ease-in-out;
+}
+
+.star_avg span.text {
+	font-size: 15px;
+	font-weight: 600;
+	vertical-align: middle;
+	margin-bottom: 20px;
+}
+
+.star_avg.rate {
+	cursor: pointer;
+	padding-top: 0;
+}
+
+/* 별점 끝 */
+
+textarea {
+	display: block;
+	height: 300px;
+	width: 100%;
+	border: 1px solid #c0c0c0;
+	outline: 0;
+	font-size: 15px;
+	padding: 10px 12px;
+	line-height: 22px;
+	margin-top: 60px;
+	margin-bottom: 60px;
+	resize: none;
+	background-color: #F2F2F2;
+}
+.picarea{
+	text-align: center;
+}
+.picarea img {
+	max-width: 40%;
+	max-height: 60%;
+	width:40%;
+	height:60%;
+	padding-top: 40px;
+}
+
+textarea::placeholder {
+	color: #aaa;
+}
+
+.filebox {
+	width: 100%;
+	margin-top: 30px;
+	margin-bottom: 60px;
+	text-align: center;
+}
+
+.file_title {
+	font-size: 15px;
+	font-weight: 600;
+	vertical-align: middle;
+	margin-bottom: 20px;
+	
+}
+
+/* 등록 버튼 */
+.submit_box {
+	text-align: center;
+	margin-top: 30px;
+}
+
+input[type="submit"] {
+	width: 50%;
+	margin-top: 24px;
+}
+
+.submit_box .rvbtn {
+	width: 60%;
+    background-color: var(--point-color);
+    border: 1px solid var(--point-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    position : relative;
+    float: center;
+    margin-bottom: 30px;
+}
+
+.submit_box .rvbtn:hover {
+	width: 60%;
+    background-color: #fff;
+    border: 1px solid var(--point-color);
+    color: var(--point-color);
+    padding: 10px;
+    position : relative;
+    float: center;
+}
+/* 페이징 */
+
+.pagination_bottom {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: inline-flex;
+	margin-top: 20px;
+	font-size: 15px;
+}
+
+.pagination_bottom a {
+	color: #999;
+	padding-right: 15px;
+}
+
+.pagination_bottom li a:hover {
+	text-decoration: none;
+	color: var(--point-color);
+}
+
+.currentPage a {
+	color: var(--point-color);
+}
+
+.pagination_bottom img {
+	margin-bottom: 5px;
+	width: 23px; 
+	height: 23px;
+}

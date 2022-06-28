@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apns">
+	<!-- 호스트 숙소 등록 시 사진등록 -->
+	<insert id="insertap" parameterType="acmpic">
+		insert into acmpic (acm_picno,acmno,acm_picname,acm_picurl) 
+					values((select nvl(max(acm_picno), 0)+1 from acmpic),#{acmno},#{acm_picname},#{acm_picurl})
+	</insert>
+	
+	<!-- 호스트 숙소 수정  -->
+	<select id="apHostAUp" resultType="acmpic">
+		select * from acmpic where acmno=#{acmno} order by acm_picno
+	</select>
+	
+	<!--  상세페이지 용 사진 리스트 불러오기  -->
+	<select id="acmpicList" parameterType="acm" resultType="acmpic">
+		select * from acmpic where acmno=#{acmno} order by acm_picno
+	</select>
+	
+	<!-- 호스트 숙소 수정 시 기존 acmpic 완전 삭제 -->
+	<delete id="deleteUp" parameterType="integer">
+		delete from acmpic where acmno=#{acmno}
+	</delete>
+
+</mapper>

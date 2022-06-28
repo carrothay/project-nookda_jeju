@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="acmns">
+	<!-- 전체 숙소 리스트 조회 / del='n' 조건 추가 !!! (5/20 hj)-->
+	<select id="list" parameterType="acm" resultType="acm">
+		select * from acm order by acmno where del='n'
+	</select>
+	
+	<!-- 인기 숙소 리스트 조회 -->
+	<select id="pList" parameterType="acm" resultType="acm">
+		select * from (select * from acm order by acm_view desc)
+		<![CDATA[where rownum <= 6]]> and del='n'
+	</select>
+	
+	<!-- 호스트가 등록한 숙소 리스트 조회 -->
+	<select id="hostList" parameterType="integer" resultType="acm">
+		select * from (select a.*, rowNum rn 
+					   from (select * from acm where mno=#{mno} and del='n'
+					   order by acmno desc) a)
+		where rn between #{startRow} and #{endRow} 
+	</select>
+
+	<!-- 호스트가 등록한 숙소 총 갯수 -->
+ 	<select id="getTotal" parameterType="integer" resultType="integer">
+		select count(*) from acm where mno=#{mno} and del='n' 
+	</select>
+	
+	<!-- 호스트 숙소 등록 -->
+	<insert id="insert" parameterType="acm">
+		insert into acm (acmno,acm_name,acm_loc,acm_addr,acm_phone,acm_checkin,acm_checkout,acm_email,acm_type,acm_content
+						 ,acm_price,acm_capa,acm_bedtype,acm_size,latitude,longtitude,mno,acm_regdate,acm_view,del) 
+					values((select nvl(max(acmno), 0)+1 from acm),#{acm_name},#{acm_loc},#{acm_addr},#{acm_phone},#{acm_checkin}
+							,#{acm_checkout},#{acm_email},#{acm_type},#{acm_content},#{acm_price},#{acm_capa},#{acm_bedtype},#{acm_size}
+							,#{latitude},#{longtitude},#{mno},sysdate,0,'n')
+	</insert>
+	
+	<!-- 호스트 숙소등록에서 사진등록 실패 시 등록된 숙소 정보 삭제 -->
+	<delete id="insertCancle" parameterType="integer" >
+		delete from acm where acmno=#{acmno}
+	</delete>
+	
+	<!-- 등록한 숙소 정보 조회 -->          <!-- del 구분도 해줘야함 !!!!!!!! 삭제하면서. -->
+	<select id="select" parameterType="integer" resultType="integer">
+		select max(acmno) from acm where mno=#{mno}
+	</select>
+	
+	<!-- 호스트 숙소등록에서 중복 등록된 내역 삭제 -->
+	<delete id="insertDelete" parameterType="integer" > 
+		delete from acm where <![CDATA[acmno <= #{dAcmno}]]>
+	</delete>
+	
+	<!-- acmno로 상세정보 조회 -->
+	<select id="select1" parameterType="acm" resultType="acm">
+		select * from acm where acmno=#{acmno}
+	</select>
+	
+	<!-- 리뷰 페이지 숙소이름 불러오기 -->
+	<select id="selectforrv" parameterType="integer" resultType="acm">
+		select * from acm where acmno = #{acmno}
+	</select>
+	
+	<!-- 관리자 숙소 목록 -->
+	<select id="adminAcmList" parameterType="member" resultType="acm">
+		select * from (select a.*, rowNum rn from (select * from acm
+			<where>
+				<!-- keyword값이 있으면 검색 없으면 생략 -->
+				<if test="keyword!=null and keyword!=''">
+					<if test="search=='subcon'">
+						subject like  '%'||#{keyword}||'%' or
+						content like  '%'||#{keyword}||'%'
+					</if>
+					<if test="search!='subcon'">
+						${search} like '%'||#{keyword}||'%'
+					</if>
+				</if>
+			</where>
+			order by acmno desc) a)
+			where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 관리자 숙소 수 확인 -->
+	<select id="getAcmTotal" parameterType="acm" resultType="integer">
+		select count(*) from acm
+		<where>
+				<!-- keyword값이 있으면 검색 없으면 생략 -->
+				<if test="keyword!=null and keyword!=''">
+					<if test="search=='subcon'">
+						subject like  '%'||#{keyword}||'%' or
+						content like  '%'||#{keyword}||'%'
+					</if>
+					<if test="search!='subcon'">
+						${search} like '%'||#{keyword}||'%'
+					</if>
+				</if>
+			</where>
+	</select>
+	
+	<!-- 메인페이지 - 지도 검색 결과 리스트 -->
+	<select resultType="acm" parameterType="acm" id="mapSearchList">
+		select * from acm where acm_loc = #{acm_loc} and del='n'
+	</select>
+	
+	<!-- 호스트 : 사진등록 시 max acmno 조회 -->
+	<select resultType="integer" id="max">
+		select max(acmno) from acm
+	</select>
+	
+	<!-- 호스트 : 호스트가 등록한 숙소 리스트 조회 (페이징x)-->
+	<select resultType="acm" parameterType="integer" id="hostAcmList">
+		select * from acm where mno=#{mno} and del='n' 
+	</select>
+	
+	<!-- 호스트 숙소 수정 -->
+	<update id="update" parameterType="acm">
+		update acm
+		set acm_loc = #{acm_loc}, acm_addr = #{acm_addr}, acm_phone = #{acm_phone}
+			, acm_checkin = #{acm_checkin},	acm_checkout = #{acm_checkout}, acm_email = #{acm_email}, acm_type = #{acm_type}
+			, acm_content = #{acm_content},	acm_price = #{acm_price}, acm_capa = #{acm_capa}, acm_bedtype = #{acm_bedtype}
+			, acm_size = #{acm_size}, latitude = #{latitude}, longtitude = #{longtitude}
+		where acmno = #{acmno}		
+	</update>
+
+	<!-- 호스트 숙소 삭제 -->
+	<update id="delete" parameterType="acm">
+		update acm set del= 'y'	where acmno = #{acmno}
+	</update>
+	
+	<!-- 관리자페이지 숙소 삭제 취소용 -->
+	<update id="delCancel" parameterType="acm">
+		update acm set del= 'n'	where acmno = #{acmno}
+	</update>
+	
+	<!-- 메인 검색 -->
+   	<select id="searchList" resultType="acm" >
+      select * from acm where acm_loc in
+      <foreach item="acm_loc" index="index" collection="acm_loc.split(',')"  open="(" separator="," close=")">
+            #{acm_loc} 
+      </foreach> and <![CDATA[ #{guestcnt} <= acm_capa ]]> and <![CDATA[ acmno not in(select b.acmno from booking b where (b.checkin <= #{checkin} and #{checkin} < b.checkout) or ( #{checkin} <= b.checkin and b.checkin < #{checkout})) ]]> and del='n'
+   </select>
+
+   <!-- 호스트 닉네임 받기 -->
+   <select id="getHostNick" resultType="string">
+	select nickname from member where mno=#{hostno}
+   </select>
+   
+   <!-- 상세페이지 조회수 카운트 -->
+   	<update id="updateReadCount" parameterType="integer">
+		update acm set acm_view=acm_view+1 where acmno=#{acmno}
+	</update>
+</mapper>

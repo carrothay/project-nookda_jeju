@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bns">
+	
+	<!-- 호스트 : 전체 예약 리스트 조회 -->
+	<select id="list4" parameterType="acm" resultType="booking">
+		select m.mlastname, m.mfstname, m.mphone, m.memail, ab.acm_name, b.bookno, b.mno, b.acmno, b.bookdate, b.checkin, b.checkout, b.guestcnt, b.bookprice, b.payby, b.request, b.bookstatus ,CASE WHEN b.checkout > to_char(sysdate, 'YYYY-MM-DD') and b.bookstatus != 'n' THEN 'y' WHEN to_char(sysdate, 'YYYY-MM-DD') >= b.checkout and b.bookstatus != 'n' THEN 'z' ELSE 'n' END as "bs"
+		from booking b, member m, (select a.acm_name, a.acmno from booking b, acm a where a.acmno=b.acmno GROUP BY a.acm_name, a.acmno) ab
+		where b.mno = m.mno and b.acmno=ab.acmno and b.acmno in(select a.acmno from acm a where a.mno=#{mno}) order by b.bookno
+	</select>
+		
+	<!-- 호스트 : 완료 예약 리스트 조회 -->
+	<select id="list3" parameterType="acm" resultType="booking">
+		select m.mlastname, m.mfstname, m.mphone, m.memail, ab.acm_name, b.*
+		from booking b, member m, (select a.acm_name, a.acmno from booking b, acm a where a.acmno=b.acmno GROUP BY a.acm_name, a.acmno) ab
+		where b.mno = m.mno and b.acmno=ab.acmno and b.acmno in(select a.acmno from acm a where a.mno=#{mno}) and b.bookstatus = 'y'and to_char(sysdate, 'YYYY-MM-DD') > b.checkout order by b.bookno
+	</select>
+	
+	<!-- 호스트 : 취소 예약 리스트 조회 -->
+	<select id="list2" parameterType="acm" resultType="booking">
+		select m.mlastname, m.mfstname, m.mphone, m.memail, ab.acm_name, b.*
+		from booking b, member m, (select a.acm_name, a.acmno from booking b, acm a where a.acmno=b.acmno GROUP BY a.acm_name, a.acmno) ab
+		where b.mno = m.mno and b.acmno=ab.acmno and b.acmno in(select a.acmno from acm a where a.mno=#{mno}) and b.bookstatus='n' order by bookno
+	</select>
+	
+	<!-- 호스트 : 예약중 예약 리스트 조회 -->
+	<select id="list1" parameterType="acm" resultType="booking">
+		select m.mlastname, m.mfstname, m.mphone, m.memail, ab.acm_name, b.*
+		from booking b, member m, (select a.acm_name, a.acmno from booking b, acm a where a.acmno=b.acmno GROUP BY a.acm_name, a.acmno) ab
+		where b.mno = m.mno and b.acmno=ab.acmno and b.acmno in(select a.acmno from acm a where a.mno=#{mno}) and b.bookstatus = 'y'and b.checkout > to_char(sysdate, 'YYYY-MM-DD') order by b.bookno
+	</select>
+	
+		<!-- 예약하기 -->
+	<insert id="insert" parameterType="booking">
+		<selectKey keyProperty="bookno" order="BEFORE" resultType="integer">
+			select nvl(max(bookno),0) +1 bookno from booking
+		</selectKey>
+		insert into booking values
+		(#{bookno},#{mno},#{acmno},TO_CHAR(sysdate, 'YYYY-MM-DD'),
+		#{checkin},#{checkout},#{guestcnt},#{bookprice},#{payby},#{request},'y')
+	</insert>
+	
+	<!-- 마이페이지 : 예정 여행 개수 -->
+	<select resultType="integer" parameterType="string" id="getmyBookings">
+		select count(*) from booking where mno = (select mno from member where memail = #{memail}) and bookstatus = 'y' and checkout > to_char(sysdate, 'YYYY-MM-DD')
+	</select>
+
+	<!-- 마이페이지 : 완료 여행 개수 -->
+	<select resultType="integer" parameterType="string" id="getmyHistory">
+		select count(*) from booking where mno = (select mno from member where memail = #{memail}) and bookstatus = 'y' and to_char(sysdate, 'YYYY-MM-DD') > checkout
+	</select>
+
+	<!-- 마이페이지 : 예정된 여행 -->
+	<select resultType="booking" parameterType="booking" id="myBookingList">
+		select * from (select e.*, rowNum rn from (select b.*, acm.acm_name from booking b, acm acm where b.acmno = acm.acmno and b.mno = #{mno}and acm.del='n' and b.bookstatus ='y'and b.checkout > to_char(sysdate, 'YYYY-MM-DD')order by bookno desc) e)where rn between #{startRow} and #{endRow}
+	</select>
+
+	<!-- 마이페이지 : 완료된 여행 -->
+	<select resultType="booking" parameterType="booking" id="myHistoryList">
+		select * from (select e.*, rowNum rn from (select b.*, acm.acm_name, r.rvno from booking b, acm acm, review r where b.acmno = acm.acmno and b.mno = #{mno} and acm.del='n' and b.bookstatus ='y'and b.bookno = r.bookno(+) and to_char(sysdate, 'YYYY-MM-DD') > b.checkout order by b.bookno desc) e) where rn between #{startRow} and #{endRow}
+	</select>
+
+	<!-- 마이페이지 : 예약취소 -->
+	<update parameterType="integer" id="myBookDelete">
+		update booking set bookstatus = 'n' where bookno = #{bookno}
+	</update>
+
+	<select resultType="booking" parameterType="booking" id="selectOne">
+		select * from booking where bookno = #{bookno}
+	</select>
+	
+	<!-- 호스트페이지 : 예약취소 -->
+	<update parameterType="integer" id="hostDelete">
+		update booking set bookstatus = 'n' where bookno = #{bookno}
+	</update>
+	
+	<!-- 호스트페이지 : 매출관리 -->
+	<select resultType="booking" parameterType="acm" id="incomeList">
+		SELECT TO_CHAR(b.dt, 'YYYY-MM') AS checkout, NVL(SUM(a.income), 0) income FROM (SELECT TO_CHAR(TO_DATE(checkout), 'YYYY-MM-DD') AS checkout, sum(bookprice) income FROM booking WHERE (TO_DATE(checkout)) BETWEEN TO_DATE((select to_char(sysdate,'yyyy')||'-01-01'from dual)) AND TO_DATE((select to_char(sysdate,'yyyy')||'-12-31' from dual)) and bookstatus != 'n' and acmno=#{acmno} GROUP BY checkout ) a, (SELECT TO_DATE((select to_char(sysdate,'yyyy')||'-01-01'from dual)) + LEVEL - 1 AS dt FROM dual CONNECT BY LEVEL <![CDATA[<=]]> (TO_DATE((select to_char(sysdate,'yyyy')||'-12-31' from dual)) - TO_DATE((select to_char(sysdate,'yyyy')||'-01-01'from dual)) + 1) ) b WHERE b.dt = a.checkout(+) GROUP BY TO_CHAR(b.dt, 'YYYY-MM') ORDER BY TO_CHAR(b.dt, 'YYYY-MM')
+	</select>
+	
+	<!-- 상세예약 : acmno로 예약조회 -->
+	<select resultType="booking" parameterType="acm" id="booked">
+		select * from booking where acmno = #{acmno}
+	</select>
+	
+	<!-- 상세예약 : 예약잡힌 기간 날짜 뽑기 -->
+	<select resultType="booking" parameterType="booking" id="bookeddate">
+		SELECT b_date
+		FROM (SELECT TO_DATE(#{checkin}, 'YYYY-MM-DD')+(LEVEL-1) b_date FROM DUAL CONNECT BY TO_DATE(#{checkin}, 'YYYY-MM-DD')+(LEVEL-1) <![CDATA[ < ]]> TO_DATE(#{checkout}, 'YYYY-MM-DD'))
+	</select>
+	
+</mapper>

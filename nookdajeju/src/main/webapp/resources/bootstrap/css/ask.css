@@ -1,0 +1,278 @@
+@charset "UTF-8";
+
+body{
+	font-family: 'nookda';
+}
+
+.container_acmwide {
+	width: 75%;
+	margin : auto;
+	padding-top: 30px;
+	padding-bottom : 30px;
+} 
+
+
+.container_semiwide {
+	width: 60%;
+	margin: 0 auto;
+	padding-bottom: 40px;
+	padding-top: 20px;
+} 
+
+.line {
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	border-bottom : 1px solid #e4e4e4;
+	
+}
+
+.title2 {
+	margin-right: 15px;
+}
+
+
+.title_box{
+	letter-spacing: 10px;
+	font-size: 25px;
+	font-weight: 600;
+	color: var(--point-color);
+	text-align: center;
+	padding : 30px;
+	border-bottom: 5px double orange;
+	margin-bottom: 15px;
+}
+
+.top {
+	display: inline-block;
+	margin-top: 20px;
+	width:100%;
+}
+.ask_title {
+	font-size: 20px;
+	font-weight: 600;
+	float: left;
+	margin-left: 30px;
+}
+
+.user_info {
+	display: inline;
+	float: right;
+}
+
+.user_info b {
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 400;
+	float: left;
+	color: #999;
+	padding: 8px;
+	margin-top: 10px;
+}
+
+.content_box {
+	display: block;
+	height: 300px;
+	width: 100%;
+	border: 1px solid #e4e4e4;
+	outline: 0;
+	item-align: center;
+	font-size: 14px;
+	padding: 0 0 0 30px;
+	line-height: 22px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	resize: none;
+	white-space: pre;
+	overflow: auto;
+	float: center;
+}
+
+.btn_box {
+	display: inline;
+}
+
+.bottom_right {
+	display: inline-block;
+	float: right;
+}
+
+.bottom_right a {
+	margin-left: 10px;
+}
+
+/* table 용 */
+.table_box{
+	padding-top: 10px;
+}
+
+table{
+	margin: auto;
+}
+tr{
+	width: 250px;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+th {
+	padding-left: 20px;
+	height: 60px;
+	width: 180px;
+	text-align: center;
+}
+
+td{
+	width: 70px;
+	padding-left: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 30px;
+}
+
+.cname{
+	font-weight: 600;
+}
+
+.listTable a {
+	color: #000;
+}
+
+/* input 용*/
+input {
+	width: 90%;
+	height: 45px;
+	border: none;
+	border-bottom: 1px solid #000;
+	outline: 0;
+	font-size: 14px;
+/* 	margin-bottom: 16px; */
+}
+input::placeholder{
+	color: #aaa;
+	font-size: 13px;
+}
+
+/* checkbox 용 */
+
+
+
+/* submit 버튼 박스 */
+.submit_box {
+	margin-top : 50px;
+	text-align: center;
+}
+
+.btn {
+	background-color: var(--point-color);
+	border-color: var(--point-color);
+	color: #fff;
+	width: 25%;
+	height: 40px;
+	font-size: 15px;
+	border-radius: 0;
+	text-align: center;
+}
+
+.btn_write{
+	float: right;
+	margin-right: 35px;
+}
+.btn:hover {
+	color : var(--point-color);
+	background-color: #fff;
+	border-color: var(--point-color);
+}
+
+.smbtn {
+	display: inline;
+	width: 100%;
+	height: 43px;
+	border: none;
+	font-size: 14px;
+	font-weight: 500;
+	color: #999;
+	cursor: pointer;
+	text-decoration: underline;
+	text-align: center;
+	margin: auto;
+}
+
+.smbtn:hover {
+	color: #000;
+}
+
+/* askList 용 */
+.askno{
+	width:30px;
+}
+
+.askname{
+	width: 400px;
+}
+
+.writer{
+	width: 40px;
+}
+
+.askcount{
+	width: 20px;
+}
+
+.askdate{
+	width: 200px;
+}
+
+.headt {
+	text-align: center;	
+}
+
+/* askView 용 */
+.view_table{
+	width: 100%;
+}
+
+.view_btn {
+	margin-top : 50px;
+	text-align: center;
+	background-color: var(--point-color);
+	border-color: var(--point-color);
+	color: #fff;
+	width: 200px;
+	height: 150px;
+	font-size: 15px;
+}
+
+.view_btn:hover{
+	color : var(--point-color);
+	background-color: #fff;
+	text-decoration: none;
+}
+
+/* 페이징 */
+.pagination_bottom {
+	display: inline-flex;
+	margin-top: 20px;
+	font-size: 15px;
+	list-style: none;
+}
+
+.pagination_bottom a {
+	color: #999;
+	padding-right: 15px;
+}
+
+.pagination_bottom li a:hover {
+	text-decoration: none;
+	color: var(--point-color);
+}
+
+.currentPage a {
+	color: var(--point-color);
+}
+
+.pagination_bottom img {
+	margin-bottom: 5px;
+	width: 23px; 
+	height: 23px;
+}

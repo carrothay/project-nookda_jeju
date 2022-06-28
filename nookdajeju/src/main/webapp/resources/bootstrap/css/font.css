@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+@font-face{
+	font-family: 'Hyejoon';
+	src: url('../fonts/hyejoon.ttf');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+     font-family: 'nookda';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gyeonggi';
+    font-weight: 500;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleMedium.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleMedium.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleMedium.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleMedium.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleMedium.ttf') format("truetype");
+    font-display: swap;
+}

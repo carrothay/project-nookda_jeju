@@ -1,0 +1,145 @@
+.line {
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 50px;
+	border-bottom : 1px solid #e4e4e4;
+}
+
+/* 관리자 메뉴 */
+.adMenu {
+	text-align: center;
+	display : inline-block;
+	margin: auto;
+	list-style: none;
+	width: 100%;
+} 
+
+.adMenu>li {
+	display : inline;
+	position: relative; 
+	width: 100%;
+	font-family: 'nookda';
+	text-align: center;
+	onclick: pointer;
+	background-color: none;
+	padding-left: 50px;
+	color: #000000;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+.adMenu img {
+	width: 50px;
+	height: 50px;
+}
+
+.adMenu>li:hover {
+	color: #ff8000;
+	font-weight: bolder;
+}
+
+/* 하단 내용 */
+.container_wide {
+	font-family: 'nookda';
+} 
+
+.title {
+	font-size: 25px;
+	font-weight: bolder;
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 25px;
+}
+
+.adtable {
+	margin-top: 50px;
+	margin-bottom: 20px;
+    width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+	text-align: center;
+	table-align:center;
+	font-size: 14px;
+	word-break: break-all; 
+}
+
+.nonelist th {
+	padding: 30px 30px;
+	font-size: 15px;
+}
+
+.container_middle table {
+	margin: auto;
+	width: 100%;
+}
+
+table th {
+	font-weight: 600;
+	border-bottom: 1px solid #999;
+	padding: 8px 10px;
+	
+}
+
+table td {
+	border-bottom: 0.5px dashed #d5d4d6;
+	padding: 10px 12px;
+	white-space: nowrap;
+}
+
+ul, li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.adbtn {
+	width: 100px;
+    background-color: var(--point-color);
+    border: 1px solid var(--point-color);
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    text-align:center;
+    padding: 10px;
+    position : relative;
+    float: right;
+    margin-bottom: 30px;
+}
+
+.adbtn:hover {
+	width: 100px;
+    background-color: #fff;
+    border: 1px solid var(--point-color);
+    color: var(--point-color);
+    padding: 10px;
+    position : relative;
+    float: right;
+}
+
+/* 페이징 */
+.pagination_bottom {
+	display: inline-flex;
+	margin-top: 20px;
+	font-size: 15px;
+}
+
+.pagination_bottom a {
+	color: #999;
+	padding-right: 15px;
+}
+
+.pagination_bottom li a:hover {
+	text-decoration: none;
+	color: var(--point-color);
+}
+
+.currentPage a {
+	color: var(--point-color);
+}
+
+.pagination_bottom img {
+	margin-bottom: 5px;
+	width: 23px; 
+	height: 23px;
+}

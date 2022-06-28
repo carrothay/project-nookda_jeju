@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviewns">
+	<!-- 마이페이지 - 나의 리뷰 총 갯수 -->
+	<select id="getmyRv" parameterType="String" resultType="integer">
+		select count(*) from review where mno = (select mno from member where 
+		memail = #{memail})
+	</select>
+	
+	<!-- 마이페이지 - 나의 리뷰 리스트 -->
+ 	<select id="myList" parameterType="review" resultType="review">
+		select *
+		from (select e.*, rowNum rn from
+		(select rv.*, acm.acm_name
+		from review rv, acm acm
+		where rv.acmno = acm.acmno and rv.mno = #{mno} and acm.del='n' order by rvno desc) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 상세 리뷰페이지 - 숙소 'a'의 전체 리뷰 갯수 -->
+	<select id="getTotalrv" parameterType="integer" resultType="integer">
+		select count(*) from review where del = 'n' and acmno = #{acmno}
+	</select>
+	
+	<!-- 상세 리뷰페이지 - 숙소 'a'의 전체 리뷰 리스트 -->
+ 	<select id="acmRvList" parameterType="review" resultType="review">
+		select * from (select rownum rn, a.* from
+		(select r.*, m.nickname, acm.acm_name from member m, review r, acm acm
+		where m.mno = r.mno and r.acmno = #{acmno} and acm.acmno = r.acmno and r.del = 'n' order by rvno desc) a)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 상세 리뷰페이지 - 평균 별점 -->
+	<select id="selectStar" parameterType="integer" resultType="float">
+		select nvl(round(avg(star_rate), 1),0) from review where acmno = #{acmno} and del = 'n'
+	</select>
+	
+	<!-- 상세 리뷰페이지 - 리뷰 작성 -->
+	<insert id="insert" parameterType="review">
+		<selectKey keyProperty = "rvno" order="BEFORE" resultType="integer">
+			select nvl(max (rvno), 0) + 1 rvno from review
+		</selectKey>
+		insert into review
+		(rvno, star_rate, rv_content,
+		rv_regdate, acmno, mno, bookno, rvpic, del)
+		 values
+		(#{rvno}, #{star_rate}, #{rv_content},
+		sysdate, #{acmno}, #{mno}, #{bookno}
+		, #{rvpic}
+		,'n')
+	</insert>
+	
+	<!-- 마이페이지 - 내 리뷰 삭제 -->
+	<update id="delete" parameterType="integer">
+		update review set del='y' where rvno=#{rvno}
+	</update>
+	
+	<!-- 마이페이지 - 리뷰 수정 시 해당 rvno의 내용 불러오기 -->
+	<select id="selectRvno" parameterType="integer" resultType="review">
+		select r.*, a.acm_name from review r, acm a
+		where r.rvno = #{rvno} and r.acmno = a.acmno
+	</select>
+	
+	<!-- 마이페이지 - 내 리뷰 수정 -->
+	<update id="update" parameterType="review">
+		update review set star_rate=#{star_rate}, rv_content=#{rv_content}
+		<if test = "rvpic != null and rvpic !=''">
+		, rvpic = #{rvpic ,jdbcType=VARCHAR}
+		</if>
+		where rvno=#{rvno}
+	</update>
+	
+		<!-- 호스트 리뷰 내역 조회 -->
+	<select id="hostRvList" parameterType="integer" resultType="review">
+		select r.*, a.acm_name, m.nickname
+		from review r, acm a, member m
+		where r.acmno=a.acmno and r.mno = m.mno and a.mno=#{mno}
+	</select>
+	
+	<select id="selectOne" resultType="review">
+		select * from review where bookno=#{bookno} and del='n'
+	</select>
+</mapper>

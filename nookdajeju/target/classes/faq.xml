@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="faqns">
+	<!-- 조회 -->
+	<select id="select" parameterType="integer" resultType="faq">
+		select * from faq where fno=#{fno}
+	</select>
+	
+	<!-- 질문 입력 -->
+	<insert id="insert" parameterType="faq">
+		insert into faq (fno, fname, faq_content, del) values(#{fno}, #{fname}, #{faq_content}, 'n')
+	</insert>
+	
+	<!-- 질문 수정 -->
+	<update id="update" parameterType="faq">
+		update faq set fname=#{fname}, faq_content=#{faq_content}
+		where fno=#{fno}
+	</update>
+	
+	<!-- 질문 삭제 -->
+	<update id="delete" parameterType="integer">
+		update faq set del = 'y' where fno = #{fno}
+	</update>
+	
+	<select id="getMaxNum" resultType="integer">
+		select nvl(max(fno), 0) + 1 from faq
+	</select>
+	
+	<!-- 질문 목록 수 -->
+	<select id="getfaqTotal" parameterType="faq" resultType="integer">
+		select count(*) from faq where del='n'	<!-- faq 행 갯수 -->
+		 
+				<!-- keyword값이 있으면 검색 없으면 생략 -->
+				<if test="keyword!=null and keyword!=''">
+					<if test="search=='subcon'">
+						and (fname like  '%'||#{keyword}||'%' or
+						faq_content like  '%'||#{keyword}||'%')
+					</if>
+					<if test="search!='subcon'">
+						and ${search} like '%'||#{keyword}||'%'
+					</if>
+				</if>
+			
+	</select>
+	
+	<!-- 질문 목록 리스트 -->
+	<select id="faqList" parameterType="faq" resultType="faq">
+		select * from (select a.*, rowNum rn from (select * from faq 
+			<where>
+				<!-- keyword값이 있으면 검색 없으면 생략 -->
+				<if test="keyword!=null and keyword!=''">
+					<if test="search=='subcon'">
+						fname like  '%'||#{keyword}||'%' or
+						faq_content like  '%'||#{keyword}||'%'
+					</if>
+					<if test="search!='subcon'">
+						${search} like '%'||#{keyword}||'%'
+					</if>
+				</if>
+			</where>
+			order by fno desc) a)
+			where del='n' and rn between #{startRow} and #{endRow}
+	</select>
+</mapper>

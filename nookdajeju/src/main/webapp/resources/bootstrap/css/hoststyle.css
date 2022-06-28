@@ -1,0 +1,466 @@
+.line {
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 50px;
+	border-bottom : 1px solid #e4e4e4;
+}
+
+/* 메뉴 */
+.hostMenu {
+	text-align: center;
+	display : inline-block;
+	margin: auto;
+	list-style: none;
+	width: 100%;
+} 
+
+.hostMenu>li {
+	display : inline;
+	position: relative; 
+	width: 100%;
+	font-family: 'nookda';
+	text-align: center;
+	onclick: pointer;
+	background-color: none;
+	padding-left: 50px;
+	color: #000000;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+.hostMenu img {
+	width: 50px;
+	height: 50px;
+}
+
+.hostMenu>li:hover {
+	color: #ff8000;
+	font-weight: bolder;
+}
+
+/* 하단 내용 */
+.container_wide {
+	font-family: 'nookda';
+	position:relative;
+} 
+
+.title {
+	font-size: 25px;
+	font-weight: bolder;
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 25px;
+}
+
+.nonelist th {
+	padding: 30px 30px;
+	font-size: 15px;
+}
+
+
+ul, li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* 페이징 */
+.pagination_bottom {
+	display: inline-flex;
+	margin-top: 30px;
+	font-size: 15px;
+}
+
+.pagination_bottom a {
+	color: #999;
+	padding-right: 15px;
+}
+
+.pagination_bottom li a:hover {
+	text-decoration: none;
+	color: var(--point-color);
+}
+
+.currentPage a {
+	color: var(--point-color);
+}
+
+.pagination_bottom img {
+	margin-bottom: 5px;
+	width: 23px; 
+	height: 23px;
+}
+
+/* 하단 내용 */
+
+.container_wide {
+	font-family: 'nookda';
+}
+
+.title {
+	font-size: 25px;
+	font-weight: bolder;
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 25px;
+}
+
+.title2 {
+	font-size: 15px;
+	font-weight: bolder;
+	text-align: left;
+	padding-top: 30px;
+	padding-bottom: 25px;
+}
+
+.searchDIV1 {
+	width: 94%;
+    margin: 0 3% 0 3%;
+	
+	margin-top: 40px;
+	margin-bottom: 15px;
+    
+    /* width: 100%; */
+	border-collapse: collapse;
+	table-layout: fixed;
+	text-align: center;
+	table-align:center;
+	font-size: 14px;
+	word-break: break-all; 
+}
+
+.bookingList_sort1{
+	width: 50%;
+    text-align: left;
+    float: left;
+}
+
+.incomeList_sort{
+	width: 50%;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+.bookingList_sort2{
+	width: 50%;
+	float: right;
+    text-align: right;
+}
+
+.tableDIV {
+	clear:both;
+	margin-top: 25px;
+	margin-bottom: -70px;
+    width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+	text-align: center;
+	table-align:center;
+	font-size: 12px;
+	word-break: break-all;
+	align:center;
+}
+
+/* booking */
+.tableDIV table {
+   /*  width: 94%;
+       margin: 0 3% 0 3%; */
+	/* width: 100%; */
+	width: 1020px;
+	/* margin: 0% 0% 0% 1%; */
+    margin: 0% 0% 5% 0%;
+    table-layout: fixed;
+}
+.tableDIV table th{
+	text-align: center;
+}
+.tableDIV table td{
+	text-align: center;
+ 	/* overflow: auto; */
+}
+
+.th1{
+	width:70px;
+}
+
+.th2{
+	width:70px;
+}
+
+.th3{
+	width:115px;
+}
+
+.th4{
+	width:94px;
+}
+
+.th5{
+	width:94px;
+}
+
+.th6{
+	width:94px;
+}
+
+.th7{
+	width:56px;
+}
+
+.th8{
+	width:100px;
+}
+
+.th9{
+	width:70px;
+}
+
+.th10{
+	width:100px;
+}
+
+.th11{
+	width:70px;
+}
+
+.th12{
+	width:58px;
+}
+
+.tdR{
+	width: 50px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.title2 {
+	width: 92%;
+    margin: 0 4% 0 4%;
+    text-align:left;
+}
+
+/* .container_wide table {
+	margin: auto;
+	width: 100%;
+	position: relative;
+} */
+
+/*  */
+table th {
+	font-weight: 600;
+	border-bottom: 1px solid #999;
+	padding: 8px 10px;
+	
+}
+
+table td {
+	border-bottom: 0.5px dashed #d5d4d6;
+	padding: 10px 12px;
+	white-space: nowrap;
+}
+
+ul, li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.before table{
+	width: 65%;
+	text-align: center;
+	table-align:center;
+}
+
+.tempimg img{
+	width: 200px;
+	height: 150px;
+}
+
+form {
+	display: inline-block;
+	table-align:center;
+}
+
+.acmform {
+	float:center;
+}
+
+.content1{
+	margin-top: 15px;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.content4{
+	padding-top: 61px;
+   /*  padding-bottom: 75px; */
+    text-align: center;
+    font-size: 14px;
+}
+
+.hostAList{
+	margin-top: 20px;
+}
+
+.none{
+	margin-top: 80px;
+    text-align: center;
+}
+
+.none1{
+	margin-top: 80px;
+    text-align: center;
+}
+.none2{
+	margin-top: 80px;
+    text-align: center;
+}
+.none3{
+	margin-top: 80px;
+    text-align: center;
+}
+
+.content1 table {
+	width: 94%;
+    margin: 0 3% 0 3%;
+}
+
+.content1 table td {
+   text-align: center;
+}
+
+.content1 table th {
+   text-align: center;
+}
+
+.a-btn {
+	margin: 30px 0 0 82%;
+}
+
+.content3{
+	/* width: 94%; */
+   /*  margin: 0 3% 0 3%; */
+   margin-top:10%;
+}
+
+
+
+.acmform{
+    margin: 0px 10% 0 10%;
+}
+
+
+/* 리뷰 */
+
+.rvpic{
+	float:left;
+	width:40%;
+}
+
+.rvcon{
+	float:right;
+	width:60%;
+	padding-left:25px;
+	padding-right:50px;
+}
+
+.rvcon_con{
+	height: 90px;
+    overflow: auto;
+    background-color:#E6E6E6;
+  /*   border-width: 1px;
+    border-style: dotted;
+    border-color: black; */
+    /* border-radius: 7px; */
+    
+}
+
+.star{
+	float:right;
+}
+
+.star{
+	float:right;
+}
+
+.rvpic img{
+	width:200px;
+	height:150px;
+}
+
+.sel-acm{
+	margin-bottom:50px;
+	/* padding-right:25px; */
+	float:left;
+    width:50%;
+}
+
+.rv-con-div{
+margin: 0 3% 0 3%;
+}
+
+#acm_content{
+	width:507px;
+	height:300px;
+	margin-top:10px;
+    resize: none;
+}
+
+.uptable{
+	table-layout:fixed;
+	width:695px;
+	text-align: center;
+	item-align: center;
+	margin-left:15px;
+	margin-top:30px;
+}
+
+#addr_search{
+    margin: 0 0 0 91px;
+}
+
+#drop{
+	width:508px;
+	margin-top:10px;
+}
+
+.btnup{
+	width:200px;
+	height:40px;
+	margin-left:300px;
+	margin-top:40px;
+	font-size:18px;
+}
+
+.r_only{
+	background-color:#F2F2F2;
+	cursor:default;
+	border: solid 1px;
+    border-radius: 3px;
+}
+
+.rvcon_con_txt{
+	padding: 5px;
+}
+
+#ref_img_btn{
+	float:left;	
+}
+
+.up {
+	position:fixed;
+	bottom:25px;
+	right:155px;
+	z-index:999;
+	/* border:1px solid #ccc; */
+	outline:none;
+	background-color:white;
+	color:#333;
+	cursor:pointer;
+	padding:15px 20px;
+	border-radius:100%;
+}
+

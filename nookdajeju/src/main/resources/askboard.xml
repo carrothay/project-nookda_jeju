@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="askns">
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+<!-- 	<resultMap id="boardResult" type="askboard">
+		<result property="askno" column="askno" />
+		<result property="mno" column="mno" />
+		<result property="askname" column="askname" />
+		<result property="askcontent" column="askcontent" />
+		<result property="ask_regdate" column="ask_regdate" />
+		<result property="readcount" column="readcount" />
+		<result property="password" column="password" />
+		<result property="ref" column="ref" />
+		<result property="re_step" column="re_step" />
+		<result property="re_level" column="re_level" />
+		<result property="del" column="del" />
+	</resultMap> -->
+	
+	
+	<select id="list" parameterType="map" resultType="askboard">
+		select * from (select rowNum rn, a.* from 
+		(select a.*, m.nickname from askboard a, member m where m.mno=a.mno and a.del='n' order by ref desc, re_step) a) 
+		where rn between #{startRow} and #{endRow}
+	</select>
+
+	<select id="getTotal" resultType="integer">
+		select count(*) from askboard where del='n'
+	</select>
+	
+	<select id="maxNum" resultType="integer">
+		select nvl(max(askno),0)+1 from askboard
+	</select>
+	 
+	<select id="select"  parameterType="integer" resultType="askboard">
+		select * from askboard where askno=#{askno}
+	</select>
+	
+	<insert id="insert" parameterType="askboard">
+		insert into askboard
+		values(#{askno},#{mno},#{askname},#{askcontent},#{ask_regdate},0,
+		#{password},#{ref},#{re_step},#{re_level},'n',#{secret},#{re_name})
+	</insert>
+	
+	<update id="updateReadcount" parameterType="integer">
+		update askboard set readcount=readcount+1 where askno=#{askno}
+	</update>
+	
+	<update id="update" parameterType="askboard">
+		update askboard set askname=#{askname},askcontent=#{askcontent} 
+		where askno=#{askno}
+	</update>
+	
+	<update id="delete" parameterType="integer">
+		update askboard set del='y' where askno=#{askno}
+	</update>
+	
+	<update id="updateRe_step" parameterType="askboard">
+		update askboard set re_step=re_step+1 
+		where ref=#{ref} and re_step>#{re_step}
+	</update>
+	
+</mapper>
