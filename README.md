@@ -45,6 +45,30 @@ The website allows users to search, book and and host unique Jeju accomodations.
 
 ##  4. Main Functions
 
+- Main page
+  - Displays accomadation pictures and a main page video
+  - Includes a map image that redirects to selected area of the island
+- Accomodation page
+  - Detailed information including location map
+  - Includes user reviews with pictures and star rates
+- Search function, Booking page
+  - Allows users to search by area, dates and number of people staying
+  - Shows only available accomodation for booking
+- My page
+  - My bookmark list
+  - My reservation list: upcoming and history
+  - My review list
+  - My info: applying section to be a host
+- Host page
+  - My accomodation list and each of its booking list
+  - Montly sales graph sorted by accomodation
+- Admin page
+  - Member list
+  - Host list
+  - Accomodation list
+  - FAQ page
+  - 1:1 QnA page
+
 <details>
 
 <summary><b>Functional Description</b></summary>
@@ -67,13 +91,7 @@ The website allows users to search, book and and host unique Jeju accomodations.
 
 10: HTML page will be shown on the client browser as the final result.
 
-###  4.2 Servlet-context.xml
-
-###  4.3 Root-context.xml
-
-###  4.3 Controller
-
-###  4.4 Menu Tree
+###  4.2 Menu Tree
 
 ![](https://github.com/carrothay/project-nookda_jeju/blob/main/images/menutree.jpg)
 
@@ -81,9 +99,33 @@ The website allows users to search, book and and host unique Jeju accomodations.
 
 </details>
 
-<!--
+## 5. Screenshots of web pages
+Main page: search accomodation section<br>
+<img src="https://github.com/carrothay/project-nookda_jeju/blob/main/images/nookda1.png"><br>
+***
+Main page: top six accomodation and area map<br>
+<img src="https://github.com/carrothay/project-nookda_jeju/blob/main/images/nookda2.png"><br>
+***
+Accomodation page: host name, size, checkin/out time, maximum occupancy<br>
+<img src="https://github.com/carrothay/project-nookda_jeju/blob/main/images/nookda3.png"><br>
+***
+Accomodation page: location map, contact number and email<br>
+<img src="https://github.com/carrothay/project-nookda_jeju/blob/main/images/nookda4.png"><br>
+***
+Accomodation page: reviews with star rates and pictures<br>
+<img src="https://github.com/carrothay/project-nookda_jeju/blob/main/images/nookda5.png"><br>
+***
+My page: my wish list<br>
+<img src="https://github.com/carrothay/project-nookda_jeju/blob/main/images/nookda6.png"><br>
+***
+My page: my upcodming reservation list<br>
+<img src="https://github.com/carrothay/project-nookda_jeju/blob/main/images/nookda7.png"><br>
+***
+My page: writing a review<br>
+<img src="https://github.com/carrothay/project-nookda_jeju/blob/main/images/nookda8.png"><br>
 
-## 5. Demo pages
+
+<!--
 
 ## 6. Refactoring
 
